@@ -203,15 +203,14 @@
 
     <div id="page4" class="page" style="padding:0;">
         <div class="inventory">
-            <div class="inv-slot" id="slot1"></div><div class="inv-slot" id="slot2"></div><div class="inv-slot" id="slot3"></div><div class="inv-slot" id="slot4"></div><div class="inv-slot" id="slot5"></div>
+            <div class="inv-slot" id="slot1"></div><div class="inv-slot" id="slot2"></div><div class="inv-slot" id="slot3"></div><div class="inv-slot" id="slot4"></div>
         </div>
-        <div class="game-hint">ตามหารูปที่ซ่อนอยู่ 5 ใบให้ครบนะ! 👇</div>
+        <div class="game-hint">ตามหารูปที่ซ่อนอยู่ 4 ใบให้ครบนะ! 👇</div>
         <div class="room-scene">
             <div class="hidden-item" style="top:15%; right:25%; transform:rotate(5deg);" onclick="foundPhoto(1, this)"><img src="photo1.jpg"></div>
             <div class="hidden-item" style="bottom:20%; left:10%; transform:rotate(-8deg);" onclick="foundPhoto(2, this)"><img src="photo2.jpg"></div>
             <div class="hidden-item" style="top:45%; left:15%; z-index:1;" onclick="foundPhoto(3, this)"><img src="photo3.jpg"></div>
             <div class="hidden-item" style="bottom:15%; right:30%; transform:rotate(12deg);" onclick="foundPhoto(4, this)"><img src="photo4.jpg"></div>
-            <div class="hidden-item" style="bottom:8%; left:40%; transform:rotate(-5deg);" onclick="foundPhoto(5, this)"><img src="photo5.jpg"></div>
         </div>
     </div>
 
@@ -246,8 +245,7 @@
             { src: "photo1.jpg", caption: "💗" },
             { src: "photo2.jpg", caption: "💗" },
             { src: "photo3.jpg", caption: "💗" },
-            { src: "photo4.jpg", caption: "💗" },
-            { src: "photo5.jpg", caption: "💗" }
+            { src: "photo4.jpg", caption: "💗" }
         ];
 
         let audioPlaying = false;
@@ -312,7 +310,7 @@
             if(heartPercent >= 100) setTimeout(() => goTo('page3'), 600);
         }
 
-        // หน้า 3 Logic (ขูดรูป photo1.jpg)
+        // หน้า 3 Logic
         function startScratch() {
             const c = document.getElementById('scratchCanvas'); const ctx = c.getContext('2d');
             ctx.fillStyle = '#ffccd5'; ctx.fillRect(0,0,300,300);
@@ -361,7 +359,7 @@
             const slot = document.getElementById('slot' + window.lastFoundIdx);
             slot.classList.add('filled'); slot.innerHTML = `<img src="${photos[window.lastFoundIdx-1].src}">`;
             collected++;
-            if(collected === 5) {
+            if(collected === 4) { // เปลี่ยนจาก 5 เป็น 4
                 setTimeout(() => document.getElementById('finalMsgContainer').classList.add('show-final'), 800);
             }
         }
